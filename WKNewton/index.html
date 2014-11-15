@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title>WKNetwon</title>
         
-        <script src="http://hunterloftis.github.io/newton/current/newton.min.js" />
+        <meta name="viewport" content="user-scalable=no, width=device-width">
         
         <style>
             html {
@@ -39,13 +39,13 @@
     
     <body id="home">
         
-        <canvas id="display" width="400" height="400"></canvas>
+        <canvas id="display" width="375" height="400"></canvas>
         
         <script type="text/javascript">
             function Rope(x, y, length) {
                 Newton.Body.call(this);   // call Body's constructor
                 
-                var segmentLength = 10;
+                var segmentLength = 20;
                 var segments = length / segmentLength;
                 var prev, current;
                 
@@ -63,6 +63,8 @@
                     prev = current;
                 }
             }
+        
+        
         
         Rope.prototype = Object.create(Newton.Body.prototype);  // extend Body's prototype
         
@@ -87,11 +89,13 @@
                                    var mousePin = null;
                                    
                                    renderer.on('pointerdown', function(point) {
+                                               
                                                var particle = sim.findNearest(point, 30);
                                                if (particle) mousePin = sim.add(Newton.PinConstraint(particle, point));
                                                });
                                                
                                                renderer.on('pointermove', function(point) {
+                                                           
                                                            if (mousePin) mousePin.setPosition(point);
                                                            });
                                                            

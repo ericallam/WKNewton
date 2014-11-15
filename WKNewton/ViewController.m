@@ -20,6 +20,7 @@
     
     WKWebViewConfiguration *config = [WKWebViewConfiguration new];
     self.webView = [[WKWebView alloc] initWithFrame:self.view.bounds configuration:config];
+    self.webView.scrollView.bounces = NO;
     
     [self.view addSubview:self.webView];
     
